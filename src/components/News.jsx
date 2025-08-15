@@ -14,7 +14,7 @@ export default class News extends Component {
     constructor(props) {
         super(props);
         // You can initialize state here if needed
-        console.log("heello from NewsItems");
+        
         this.state = {
             articles: this.articles,
             loading: false,
@@ -28,9 +28,9 @@ export default class News extends Component {
 
 
     async componentDidMount() {
-        console.log(this.state.apiKey);
         
-        let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${this.state.apiKey}&page=1&pageSize=${this.props.pageSize}`;
+        
+        const url = `https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=${this.state.apiKey}&page=1&pageSize=${this.props.pageSize}`;
         this.setState({loading:true});
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -47,7 +47,7 @@ export default class News extends Component {
         this.setState({ pageNo: newState});
 
 
-        let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${import.meta.env.VITE_API_KEY}=${this.newState}&pageSize=${this.props.pageSize}`;
+        const url = `https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=${this.state.apiKey}&page=${newState}&pageSize=${this.props.pageSize}`;
         
         this.setState({loading: true})
         let data = await fetch(url);
@@ -60,14 +60,18 @@ export default class News extends Component {
     handleNext = async() => {
         
         
+        
+        
         let newState = this.state.pageNo+1;
         this.setState({ pageNo: newState}); 
-        let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${import.meta.env.VITE_API_KEY}=${newState}&pageSize=${this.props.pageSize}`;     
+        
+        const url = `https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=${this.state.apiKey}&page=${newState}&pageSize=${this.props.pageSize}`;     
         this.setState({loading: true});   
         let data = await fetch(url);
         let parsedData = await data.json();
         this.setState({ articles: parsedData.articles, loading: false });
         
+
          
     }
 
@@ -91,8 +95,11 @@ export default class News extends Component {
                             return <div key={element.url} >
                                 <NewsItems
                                     title={element.title.slice(0, 45) + "..."}
-                                    description={element.description != null ? element.description.slice(0, 88) + "..." : "..."} 
+                                    
+                                    description={element.description != null ? element.description.slice(0, 88) + "..." : "..."}  
+                                    
                                     imageUrl={element.urlToImage == null ? "https://nlujodhpur.ac.in/public/front/img/default-news.png" : element.urlToImage}
+                                    
                                     newsUrl={element.url} />
                             </div>
                         })}
@@ -111,7 +118,10 @@ export default class News extends Component {
                     
                     <button
                      id='nextButton'
-                     className={`bg-black p-2 text-white rounded-lg text-xs ${this.state.pageNo >= Math.ceil(this.state.totalResults/14)? `cursor-not-allowed opacity-50`: `cursor-pointer`} ` }onClick={this.handleNext}
+                     
+                     className={`bg-black p-2 text-white rounded-lg text-xs ${this.state.pageNo >= Math.ceil(this.state.totalResults/14)? `cursor-not-allowed opacity-50`: `cursor-pointer`} ` }
+                     
+                     onClick={this.handleNext}
                      >next &rarr;
                      </button>
                 </div>

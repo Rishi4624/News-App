@@ -15,7 +15,7 @@ function App() {
     <div className='bg-gray-200 dark:bg-gray-200 min-h-screen'>
       <Navbar />
       
-      <News pageSize='5'/>  
+      <News pageSize='5'category="sports"/>  
      
       {/* <Todo></Todo> */}
     </div>
