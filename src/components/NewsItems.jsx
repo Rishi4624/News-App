@@ -2,14 +2,10 @@ import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
 import Navbar from './Navbar.jsx'
 
-export class NewsItems extends Component {
+function NewsItems(props) {
+  
 
-
-
-
-  render() {
-
-    let { title, description, imageUrl, newsUrl } = this.props;
+    let { title, description, imageUrl, newsUrl } = props;
 
     return (
       <div>
@@ -37,7 +33,7 @@ export class NewsItems extends Component {
         </div>
       </div>
     )
-  }
+  
 }
 
 export default NewsItems
