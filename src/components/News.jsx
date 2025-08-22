@@ -118,7 +118,7 @@ function News(props){
                
 
         return (
-            <div className='container m-auto p-4'>
+            <div className='container m-auto p-4 py-19'>
 
                 <h1 className="text-3xl font-bold text-center my-5">Latest News</h1>
                 
@@ -127,7 +127,7 @@ function News(props){
                 
 
                
-                  <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
+                  <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 '>
                         { !loading &&   articles.map((element) => {
                             return <div key={element.url} >
                                 <NewsItems

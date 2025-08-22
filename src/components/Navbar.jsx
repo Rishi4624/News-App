@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <div>
 
-         <nav className="border-gray-200 bg-gray-50 dark:bg-gray-300  dark:border-gray-700 ">
+         <nav className="border-gray-200 bg-gray-50 dark:bg-gray-300  dark:border-gray-700 fixed w-full ">
                     <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                             <img src="https://www.shutterstock.com/image-vector/latest-news-breaking-report-badge-600nw-2467118167.jpg" className="h-8 rounded-2xl" alt="Flowbite Logo" />

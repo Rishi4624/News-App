@@ -20,17 +20,20 @@ function App() {
   return (
     <Router>
       <div className='bg-gray-200 dark:bg-gray-200 min-h-screen'>
-        <Navbar />
+          <Navbar />
+        
+        
 
         <Routes>
           <Route path="/" element={<News pageSize={5} category="general" />} />
-          <Route path="/entertarment" element={<News pageSize={5} category="entertarment" />} />
+          <Route path="/entertarment" element={<News pageSize={5} category="entertainment" />} />
           <Route path="/sports" element={<News pageSize={5} category="sports" />} />
           <Route path="/technology" element={<News pageSize={5} category="technology" />} />
           <Route path="/science" element={<News pageSize={5} category="science" />} />
           <Route path="/health" element={<News pageSize={5} category="health" />} />
           <Route path="/business" element={<News pageSize={5} category="business" />} />
         </Routes>
+        
       </div>
     </Router>
   )
